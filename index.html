@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Loaded</title>
+</head>
+<body>
+
+<script src="loaded.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" onload="loaded.done('jquery');"></script>
+<script>
+
+	/**
+	 * Appends underscore script tag to simulate delayed loading
+	 */
+	function appendUnderscore() {
+		const script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.async = true;
+		script.onload = function() {
+			loaded.done('underscore');
+		}
+		script.src = 'https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js';
+		document.getElementsByTagName('head')[0].appendChild(script);
+	}
+
+	setTimeout(appendUnderscore, 1000);
+
+	// Add items to the queue
+	loaded.push(function() {
+		$("<h1>Hello World</h1>").appendTo('body').css('color', 'yellow');
+	}, ['jquery', 'underscore'], 'load');
+
+	loaded.push(function() {
+		$('body').css('background', 'red');
+	}, 'jquery', 'domready');
+
+	loaded.push(function() {
+		$("<h2>Hello there</h2>").appendTo('body');
+	}, 'jquery', 'domready');
+
+	loaded.push(function() {
+		$('body').css('outline', '10px solid yellowgreen');
+	}, 'jquery');
+
+	// Add a function with context and params
+	loaded.push(loaded.wrapFunction(function(argument) {
+		console.log(argument);
+	}, this, ['Hello World']), 'jquery');
+
+	// This is needed to start Loaded
+	loaded.check();
+
+</script>
+
+</body>
+</html>

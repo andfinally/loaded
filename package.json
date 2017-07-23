@@ -1,0 +1,21 @@
+{
+  "name": "dependencies",
+  "version": "1.0.0",
+  "description": "Dependency manager",
+  "main": "deps.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "event-stream": "^3.3.4",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-livereload": "^3.8.1",
+    "gulp-rename": "^1.2.2",
+    "run-sequence": "^2.0.0"
+  },
+  "dependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
