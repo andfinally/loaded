@@ -97,7 +97,7 @@
 				}
 			}
 
-			// Invoke the item's callback and remove the item from cmd.queue
+			// Invoke the item's callback and remove the item from queue
 			if (item.deps.length === 0) {
 				switch (item.event) {
 					case 'load':

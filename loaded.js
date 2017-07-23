@@ -85,7 +85,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 		self.counter++;
 		if (self.counter > self.maxCounter) {
 			throw new Error('loaded exiting. Not all dependencies have loaded.');
-			return;
 		}
 
 		for (var i = 0; i < self.queue.length; i++) {
@@ -99,7 +98,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 				}
 			}
 
-			// Invoke the item's callback and remove the item from cmd.queue
+			// Invoke the item's callback and remove the item from queue
 			if (item.deps.length === 0) {
 				switch (item.event) {
 					case 'load':
